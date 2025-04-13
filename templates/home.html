@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Welcome – FoundaSpark</title>
+</head>
+<body>
+  <h2>Welcome, {{ user }}!</h2>
+
+  <!-- Form to submit the startup idea -->
+  <form method="post" action="/analyze_idea">
+    <label for="idea">Startup Idea:</label>
+    <input type="text" id="idea" name="idea" placeholder="Enter your startup idea" required>
+    <button type="submit">Analyze Idea</button>
+  </form>
+  <form method="post" action="/market_research">
+  <h2>Market Research</h2>
+  <input type="text" name="idea" placeholder="Enter your startup idea" required>
+  <button type="submit">Analyze Market</button>
+  </form>
+
+  <a href="/logout">Logout</a>
+</body>
+</html>

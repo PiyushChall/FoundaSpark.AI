@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Research Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Market Research Analysis</h2>
+
+        <!-- Displaying the Idea -->
+        <div class="idea-section">
+            <h3>Startup Idea</h3>
+            <p>{{ analysis_result['startup_idea'] }}</p>
+        </div>
+
+        <!-- Displaying the Market Research Details -->
+        <div class="analysis-section">
+            <h3>Market Research Results</h3>
+            <p><strong>Market Size:</strong> {{ analysis_result['market_size'] }}</p>
+            <p><strong>Target Audience:</strong> {{ analysis_result['target_audience'] }}</p>
+            <p><strong>Competitors:</strong> {{ analysis_result['competitors'] }}</p>
+            <p><strong>Market Trends:</strong> {{ analysis_result['market_trends'] }}</p>
+            <p><strong>Growth Potential:</strong> {{ analysis_result['growth_potential'] }}</p>
+            <p><strong>Revenue Potential:</strong> {{ analysis_result['revenue_potential'] }}</p>
+        </div>
+
+        <!-- Bar Chart (if available in the result) -->
+        {% if analysis_result['market_trends_data'] %}
+        <div class="chart-section">
+            <h3>Market Trends Over Time</h3>
+            <div id="market-trends-chart"></div>
+        </div>
+        {% endif %}
+
+        <!-- Back to Home or Login if no user -->
+        <div class="footer">
+            <a href="/">Back to Home</a>
+            {% if not user %}
+            <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Include chart.js for rendering charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {% if analysis_result['market_trends_data'] %}
+    <script>
+        const marketTrendsData = {{ analysis_result['market_trends_data'] | tojson }};
+
+        const ctx = document.getElementById('market-trends-chart').getContext('2d');
+        const marketTrendsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: marketTrendsData.labels,
+                datasets: [{
+                    label: 'Market Trends Over Time',
+                    data: marketTrendsData.values,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            });
+    </script>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Idea Analysis – FoundaSpark</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .metric {
+            margin: 15px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #444;
+        }
+
+        .bar-container {
+            background-color: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .bar {
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        .low    { width: 30%; background: #e57373; }
+        .medium { width: 60%; background: #fbc02d; }
+        .high   { width: 90%; background: #81c784; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Startup Idea Analysis</h2>
+
+        <div class="metric"><span class="label">Idea Length:</span> {{ analysis_result.idea_length }} words</div>
+        <div class="metric"><span class="label">Is Unique:</span> {{ analysis_result.is_unique }}</div>
+        <div class="metric"><span class="label">Clarity Score:</span> {{ analysis_result.clarity_score }}/10</div>
+        <div class="metric"><span class="label">Target Market Identified:</span> {{ analysis_result.target_market_identified }}</div>
+        <div class="metric"><span class="label">Problem-Solution Fit:</span> {{ analysis_result.problem_solution_fit }}</div>
+        <div class="metric"><span class="label">Feasibility Level:</span>
+            <div class="bar-container">
+                <div class="bar {{ analysis_result.feasibility_level|lower }}"></div>
+            </div>
+        </div>
+        <div class="metric"><span class="label">Revenue Potential:</span>
+            <div class="bar-container">
+                <div class="bar {{ analysis_result.revenue_potential|lower }}"></div>
+            </div>
+        </div>
+        <div class="metric"><span class="label">Potential for Growth:</span>
+            <div class="bar-container">
+                <div class="bar {{ analysis_result.potential_for_growth|lower }}"></div>
+            </div>
+        </div>
+
+        <br>
+        <div style="text-align:center;">
+            <a href="/">← Analyze Another Idea</a>
+        </div>
+    </div>
+</body>
+</html>
