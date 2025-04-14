@@ -63,17 +63,21 @@ def analyze_market_research(idea: str) -> dict:
 
     Return JSON with the following keys:
     - market_size: Small/Medium/Large
+    - target_audience: Who is most likely to use or benefit from this product?
     - competitors: List the main competitors in the market
-    - trends: Describe current trends related to the idea
+    - market_trends: Describe current trends related to the idea
     - market_opportunity: High/Medium/Low
     - barriers_to_entry: Low/Moderate/High
     - customer_acquisition_cost: Low/Moderate/High
     - scalability: Low/Medium/High
+    - growth_potential: Estimate the idea's ability to grow over time
+    - revenue_potential: Estimate the possible revenue this idea can generate
     """
 
     print("Sending to LLM for market research...")
     response = model.generate_content(prompt)
     raw_text = response.text.strip()
+    '''print("Raw LLM response:", raw_text)'''
 
     try:
         # Extract JSON from possible markdown formatting

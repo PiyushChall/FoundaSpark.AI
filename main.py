@@ -66,6 +66,23 @@ def register_post(request: Request, username: str = Form(...), password: str = F
         return templates.TemplateResponse("register.html", {"request": request, "error": str(e)})
 
 
+@app.post("/analyze")
+def analyze_combined_post(request: Request, idea: str = Form(...)):
+    user = request.session.get("user")
+    if not user:
+        return RedirectResponse("/login", status_code=302)
+
+    idea_result = analyze_idea_with_ai(idea)
+    market_result = analyze_market_research(idea)
+
+    return templates.TemplateResponse("analysis.html", {
+        "request": request,
+        "idea_result": idea_result,
+        "market_result": market_result,
+        "idea_text": idea
+    })
+
+'''
 @app.post("/analyze_idea")
 def analyze_idea_post(request: Request, idea: str = Form(...)):
     print(f"Received idea: {idea}")
@@ -92,7 +109,8 @@ def market_research_post(request: Request, idea: str = Form(...)):
 
     # Call the analyze_market_research function
     analysis_result = analyze_market_research(idea)
-    return templates.TemplateResponse("market_research_analysis.html", {
+    return templates.TemplateResponse("market_research.html", {
         "request": request,
         "analysis_result": analysis_result
     })
+'''

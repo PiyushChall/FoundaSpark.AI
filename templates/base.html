@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Idea Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .section {
+            flex: 1;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .section h2 {
+            text-align: center;
+            color: #333;
+        }
+        .metric {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .metric span {
+            margin-left: 5px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Startup Idea and Market Research Analysis</h1>
+
+    <div class="container">
+        <!-- Idea Analysis Section -->
+        <div class="section">
+            <h2>Idea Analysis</h2>
+            <div class="metric"><span class="label">Idea Length:</span> {{ idea_result.idea_length }} words</div>
+            <div class="metric"><span class="label">Is Unique:</span> {{ idea_result.is_unique }}</div>
+            <div class="metric"><span class="label">Clarity Score:</span> {{ idea_result.clarity_score }}/10</div>
+            <div class="metric"><span class="label">Target Market Identified:</span> {{ idea_result.target_market_identified }}</div>
+            <div class="metric"><span class="label">Problem-Solution Fit:</span> {{ idea_result.problem_solution_fit }}</div>
+            <div class="metric"><span class="label">Feasibility Level:</span>
+                <div class="bar-container"><div class="bar {{ idea_result.feasibility_level|lower }}"></div></div>
+            </div>
+            <div class="metric"><span class="label">Revenue Potential:</span>
+                <div class="bar-container"><div class="bar {{ idea_result.revenue_potential|lower }}"></div></div>
+            </div>
+            <div class="metric"><span class="label">Potential for Growth:</span>
+                <div class="bar-container"><div class="bar {{ idea_result.potential_for_growth|lower }}"></div></div>
+            </div>
+        </div>
+
+        <!-- Market Research Section -->
+        <div class="section">
+            <h2>Market Research</h2>
+            <div class="metric"><span class="label">Market Size:</span> {{ market_result.market_size }}</div>
+            <div class="metric"><span class="label">Target Audience:</span> {{ market_result.target_audience | join(", ") }}</div>
+            <div class="metric"><span class="label">Competitors:</span> {{ market_result.competitors | join(", ") }}</div>
+            <div class="metric"><span class="label">Market Trends:</span> {{ market_result.market_trends }}</div>
+            <div class="metric"><span class="label">Market Opportunity:</span> {{ market_result.market_opportunity }}</div>
+            <div class="metric"><span class="label">Barriers to Entry:</span> {{ market_result.barriers_to_entry }}</div>
+            <div class="metric"><span class="label">Customer Acquisition Cost:</span> {{ market_result.customer_acquisition_cost }}</div>
+            <div class="metric"><span class="label">Scalability:</span> {{ market_result.scalability }}</div>
+            <div class="metric"><span class="label">Growth Potential:</span> {{ market_result.growth_potential }}</div>
+            <div class="metric"><span class="label">Revenue Potential:</span> {{ market_result.revenue_potential }}</div>
+        </div>
+    </div>
+</body>
+</html>
