@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from llm import analyze_idea_with_ai, analyze_market_research
+from llm import analyze_idea_with_ai, analyze_market_research, analyze_problem_solution, analyze_uvp, analyze_business_model, generate_pitch_deck_summary
 
 from database import get_db, engine
 import models
@@ -74,11 +74,19 @@ def analyze_combined_post(request: Request, idea: str = Form(...)):
 
     idea_result = analyze_idea_with_ai(idea)
     market_result = analyze_market_research(idea)
+    problem_solution_result = analyze_problem_solution(idea)
+    uvp_analysis_result = analyze_uvp(idea)
+    business_model_analysis_result = analyze_business_model(idea)
+    pitch_deck_summary_result = generate_pitch_deck_summary(idea)
 
     return templates.TemplateResponse("analysis.html", {
         "request": request,
         "idea_result": idea_result,
         "market_result": market_result,
+        "problem_solution_result": problem_solution_result,
+        "uvp_analysis_result": uvp_analysis_result,
+        "business_model_analysis_result": business_model_analysis_result,
+        "pitch_deck_summary_result": pitch_deck_summary_result,
         "idea_text": idea
     })
 
