@@ -1,9 +1,11 @@
 import os
 import google.generativeai as genai
 import json  # Use safe JSON parsing instead of eval
+from dotenv import load_dotenv
+load_dotenv()
 
 # Configure the API key
-genai.configure(api_key="AIzaSyDkKktyTOTvNi_aBHYItxzUfyNukFBn6Vs")  # Use env var in production
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))  # Use env var in production
 
 # Load the model
 model = genai.GenerativeModel("gemini-2.0-flash")

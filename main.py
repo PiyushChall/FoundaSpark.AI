@@ -89,36 +89,3 @@ def analyze_combined_post(request: Request, idea: str = Form(...)):
         "pitch_deck_summary_result": pitch_deck_summary_result,
         "idea_text": idea
     })
-
-'''
-@app.post("/analyze_idea")
-def analyze_idea_post(request: Request, idea: str = Form(...)):
-    print(f"Received idea: {idea}")
-
-    user = request.session.get("user")
-    if not user:
-        return RedirectResponse("/login", status_code=302)
-
-    analysis_result = analyze_idea_with_ai(idea)
-    return templates.TemplateResponse("idea_analysis.html", {
-        "request": request,
-        "analysis_result": analysis_result
-    })
-
-@app.post("/market_research")
-def market_research_post(request: Request, idea: str = Form(...)):
-    """
-    Endpoint to analyze market research for a given startup idea.
-    """
-    print(f"Received idea for market research: {idea}")
-    user = request.session.get("user")
-    if not user:
-        return RedirectResponse("/login", status_code=302)
-
-    # Call the analyze_market_research function
-    analysis_result = analyze_market_research(idea)
-    return templates.TemplateResponse("market_research.html", {
-        "request": request,
-        "analysis_result": analysis_result
-    })
-'''
