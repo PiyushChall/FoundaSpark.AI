@@ -23,7 +23,7 @@ def analyze_idea_with_ai(idea: str) -> dict:
     - is_unique: Yes or No
     - clarity_score: rate from 1 to 10
     - target_market_identified: Yes or No
-    - problem_solution_fit: Weak/Moderate/Strong
+    - problem_solution_fit: Low/Medium/High
     - feasibility_level: Low/Medium/High
     - revenue_potential: Low/Moderate/High
     - potential_for_growth: Low/Medium/High

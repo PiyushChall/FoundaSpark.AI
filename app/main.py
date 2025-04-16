@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request, Form, Depends
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
-from passlib.hash import bcrypt
 from sqlalchemy.orm import Session
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -10,8 +9,7 @@ from llm import analyze_idea_with_ai, analyze_market_research, analyze_problem_s
 
 from database import get_db, engine
 import models
-from auth import authenticate_user, register_user, username_exists
-
+from auth import authenticate_user, register_user
 
 app = FastAPI()
 
