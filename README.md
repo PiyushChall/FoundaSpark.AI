@@ -1,7 +1,7 @@
 FoundaSpark.AI
 Validate startup ideas and generate pitch decks using a powerful Multi-Agent AI System.
 
-🔗 Launch App
+🔗 Launch App: https://rising-melania-piyushchall-3f97946b.koyeb.app/
 
 🚀 About the Project
 FoundaSpark.AI helps entrepreneurs, innovators, and startups validate their business ideas.
@@ -52,6 +52,7 @@ Instant Pitch Deck Generation.
 
 🌐 How to Use
 Visit the web app: FoundaSpark.AI
+https://rising-melania-piyushchall-3f97946b.koyeb.app/
 
 Submit your startup idea.
 
